@@ -60,8 +60,6 @@
 // });
 
 document.addEventListener("DOMContentLoaded", () => {
-    let cartTotal = 0;
-    let cartCount = 0;
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     function saveCartToStorage() {
@@ -73,9 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const cartTotalSpan = document.getElementById("cart-total");
         const cartCountSpan = document.getElementById("cart-count");
 
-        cartItemsList.innerHTML = ""; // Clear cart list
-        cartTotal = 0;
-        cartCount = 0;
+        cartItemsList.innerHTML = ""; 
+        let cartTotal = 0;
+        let cartCount = 0;
 
         cart.forEach((item, index) => {
             cartTotal += item.price;
@@ -101,10 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".remove-item").forEach(button => {
             button.addEventListener("click", () => {
                 let index = button.getAttribute("data-index");
-                let removedItem = cart.splice(index, 1)[0];
-
-                cartTotal -= removedItem.price;
-                cartCount--;
+                cart.splice(index, 1);
 
                 saveCartToStorage();
                 updateCartUI();
@@ -121,23 +116,34 @@ document.addEventListener("DOMContentLoaded", () => {
             let itemImage = item.querySelector("img").src;
 
             let cartItem = {
-                id: `${itemId}-${Date.now()}`, // Unique identifier
+                id: `${itemId}-${Date.now()}`, 
                 name: itemName,
                 price: itemPrice,
                 image: itemImage
             };
 
             cart.push(cartItem);
-            cartTotal += itemPrice;
-            cartCount++;
-
             saveCartToStorage();
             updateCartUI();
         });
     });
 
-    updateCartUI(); // Load cart on page refresh
+    // Buy Button Functionality
+    document.getElementById("buy-button").addEventListener("click", () => {
+        if (cart.length === 0) {
+            alert("Your cart is empty! Add items before purchasing.");
+            return;
+        }
+
+        alert("Successfully bought!");
+        cart = []; // Clear the cart
+        saveCartToStorage();
+        updateCartUI();
+    });
+
+    updateCartUI(); 
 });
+
 
 
 

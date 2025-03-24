@@ -111,7 +111,7 @@ body {
 .cart-container {
     flex: 1;
     padding: 15px;
-    background: #c3a16e;
+    background: #d1cdc7;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -128,6 +128,10 @@ body {
 #cart-items {
     list-style-type: none;
     padding: 0;
+}
+
+#cart-count{
+    color: rgb(175, 142, 6);
 }
 
 .cart-item {
@@ -161,7 +165,7 @@ body {
 
 /* Remove Item Button */
 .remove-item {
-    background-color: rgb(4, 84, 4);
+    background-color: rgb(247, 6, 18);
     color: white;
     border: none;
     padding: 5px 10px;
@@ -170,8 +174,28 @@ body {
 }
 
 .remove-item:hover {
-    background-color: darkgreen;
+    background-color: rgb(5, 12, 9);
 }
+
+/* Buy Button */
+.buy-button {
+    background-color: rgb(139, 34, 114); /* Green color */
+    color: white;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.buy-button:hover {
+    background-color: rgb(42, 16, 41);
+}
+
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
