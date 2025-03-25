@@ -59,6 +59,7 @@
 //     }
 // });
 
+
 document.addEventListener("DOMContentLoaded", () => {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -136,13 +137,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         alert("Successfully bought!");
-        cart = []; // Clear the cart
+        cart = []; 
         saveCartToStorage();
         updateCartUI();
     });
 
     updateCartUI(); 
+
 });
+
+
+
+
 
 
 
